@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="ServiceFlow AI — Run your salon. Not your paperwork.">
+  <rect width="1200" height="630" fill="#faf8f4"/>
+  <circle cx="1090" cy="90" r="210" fill="#e6eee7" opacity="0.75"/>
+  <rect x="72" y="66" width="46" height="46" rx="13" fill="#173f2f"/>
+  <path d="M102 80c-2.8-3-7.1-4.1-11-2.4-5.3 2.4-5.5 10 .2 12.3l6.5 2.6c4.5 1.7 4.4 8.3-.3 9.9-3.5 1.2-7.4-.2-9.5-3.3" fill="none" stroke="#f7f3ea" stroke-width="4.2" stroke-linecap="round"/>
+  <text x="134" y="98" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#17241d">ServiceFlow AI</text>
+  <rect x="72" y="176" width="270" height="40" rx="20" fill="#ffffff" stroke="#e7e2d8"/>
+  <circle cx="95" cy="196" r="4" fill="#6f8f7a"/>
+  <text x="109" y="202" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="1.6" fill="#173f2f">SALON MANAGEMENT, SIMPLIFIED</text>
+  <text x="72" y="304" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="-4" fill="#17241d">Run your salon.</text>
+  <text x="72" y="386" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="-4" fill="#173f2f">Not your paperwork.</text>
+  <text x="74" y="454" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#5f6b64">Appointments, customers, staff and business insights</text>
+  <text x="74" y="490" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#5f6b64">in one organized workspace for independent salons.</text>
+  <rect x="848" y="118" width="280" height="394" rx="26" fill="#173f2f"/>
+  <rect x="874" y="146" width="228" height="42" rx="12" fill="#ffffff" opacity="0.12"/>
+  <text x="892" y="173" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#e6eee7">Dashboard preview</text>
+  <rect x="874" y="204" width="106" height="82" rx="14" fill="#ffffff"/>
+  <rect x="996" y="204" width="106" height="82" rx="14" fill="#ffffff"/>
+  <text x="890" y="229" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#7f8a83">REVENUE</text>
+  <text x="890" y="263" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#173f2f">4,320</text>
+  <text x="1012" y="229" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#7f8a83">BOOKINGS</text>
+  <text x="1012" y="263" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#173f2f">28</text>
+  <rect x="874" y="302" width="228" height="182" rx="16" fill="#ffffff"/>
+  <rect x="892" y="428" width="20" height="38" rx="5" fill="#dfe8df"/>
+  <rect x="922" y="406" width="20" height="60" rx="5" fill="#dfe8df"/>
+  <rect x="952" y="416" width="20" height="50" rx="5" fill="#dfe8df"/>
+  <rect x="982" y="386" width="20" height="80" rx="5" fill="#4f7660"/>
+  <rect x="1012" y="398" width="20" height="68" rx="5" fill="#dfe8df"/>
+  <rect x="1042" y="374" width="20" height="92" rx="5" fill="#dfe8df"/>
+  <text x="892" y="338" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#17241d">Revenue overview</text>
+  <rect x="74" y="545" width="206" height="36" rx="18" fill="#ffffff" stroke="#e7e2d8"/>
+  <text x="93" y="569" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#173f2f">Illustrative preview · demo data</text>
+</svg>
