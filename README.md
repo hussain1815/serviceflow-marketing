@@ -62,7 +62,9 @@ public/
 ### 1. Demo request form
 
 The form lives in `DemoModal.tsx`. It validates all required fields, email format,
-country, business type, staff count and privacy consent.
+WhatsApp number (international format with country calling code), preferred
+contact method, country, business type, staff count and privacy consent. An
+optional separate checkbox collects WhatsApp contact consent.
 
 Submission is handled by `src/lib/demoSubmission.ts` through the Web3Forms API
 (`https://api.web3forms.com/submit`). Connect your Web3Forms form by setting:
@@ -99,10 +101,17 @@ fields:
   "staffCount": "2–5",
   "challenge": "Optional text",
   "consent": true,
+  "WhatsApp Number": "+4915123456789",
+  "Preferred Contact Method": "Email",
+  "WhatsApp Contact Consent": "Yes",
   "source": "serviceflow-marketing",
   "submittedAt": "2026-01-01T00:00:00.000Z"
 }
 ```
+
+The WhatsApp number is collected with an international phone input
+(`react-phone-number-input`) and is submitted in E.164 format (for example
+`+4915123456789`) whenever the entered number is valid.
 
 The success state is shown only when Web3Forms confirms the submission
 (`success: true` in the JSON response). Network failures, non-2xx responses and

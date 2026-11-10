@@ -340,6 +340,8 @@ export const demoFormContent = {
     fullName: "Full name",
     salonName: "Salon or business name",
     email: "Business email",
+    whatsappNumber: "WhatsApp number",
+    preferredContactMethod: "Preferred contact method",
     country: "Country",
     businessType: "Business type",
     staffCount: "Number of staff",
@@ -347,11 +349,16 @@ export const demoFormContent = {
     consent: "I agree to be contacted about ServiceFlow AI early access.",
     consentDetail:
       "I understand this form does not store my details in this browser.",
+    whatsappConsent:
+      "I agree to be contacted by WhatsApp about my demo request.",
+    whatsappConsentDetail:
+      "Optional. Used only to arrange your demo — no marketing messages.",
   },
   placeholders: {
     fullName: "Your name",
     salonName: "Your salon name",
     email: "you@yoursalon.com",
+    whatsappNumber: "+49 151 23456789",
     challenge: "Tell us what takes up too much time today",
     select: "Select an option",
   },
@@ -373,6 +380,9 @@ export const demoFormContent = {
     "No Web3Forms access key is configured, so your details were not sent or stored. This preview will not display a false success message.",
   required: "This field is required.",
   invalidEmail: "Enter a valid email address.",
+  invalidWhatsappNumber: "Enter a valid WhatsApp number with country code.",
+  countrySelectLabel: "Country calling code",
+  preferredContactMethods: ["Email", "WhatsApp", "Either"],
   consentRequired: "Please confirm before submitting.",
   finePrint:
     "Submissions are sent through Web3Forms only when an access key is configured. No form data is saved in localStorage.",

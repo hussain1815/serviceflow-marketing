@@ -5,6 +5,9 @@ import {
   Loader2,
   X,
 } from "lucide-react";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import flags from "react-phone-number-input/flags";
+import "react-phone-number-input/style.css";
 import { useEffect, useRef, useState } from "react";
 import type {
   ChangeEvent,
@@ -29,11 +32,14 @@ const emptyValues: FormValues = {
   fullName: "",
   salonName: "",
   email: "",
+  whatsappNumber: "",
+  preferredContactMethod: "",
   country: "",
   businessType: "",
   staffCount: "",
   challenge: "",
   consent: false,
+  whatsappConsent: false,
 };
 
 function validate(values: FormValues): FormErrors {
@@ -51,6 +57,16 @@ function validate(values: FormValues): FormErrors {
     errors.email = copy.required;
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
     errors.email = copy.invalidEmail;
+  }
+
+  if (!values.whatsappNumber.trim()) {
+    errors.whatsappNumber = copy.required;
+  } else if (!isValidPhoneNumber(values.whatsappNumber)) {
+    errors.whatsappNumber = copy.invalidWhatsappNumber;
+  }
+
+  if (!values.preferredContactMethod) {
+    errors.preferredContactMethod = copy.required;
   }
 
   if (!values.country) {
@@ -121,7 +137,11 @@ function TextField({
 
 interface SelectFieldProps {
   id: string;
-  name: "country" | "businessType" | "staffCount";
+  name:
+    | "country"
+    | "businessType"
+    | "staffCount"
+    | "preferredContactMethod";
   label: string;
   value: string;
   options: string[];
@@ -261,12 +281,11 @@ export function DemoModal({ open, onClose }: DemoModalProps) {
     const field = target.name;
 
     setValues((current) => {
-      if (field === "consent") {
+      if (field === "consent" || field === "whatsappConsent") {
         return {
           ...current,
-          consent:
-            target instanceof HTMLInputElement ? target.checked : false,
-        };
+          [field]: target instanceof HTMLInputElement ? target.checked : false,
+        } as FormValues;
       }
 
       return { ...current, [field]: target.value } as FormValues;
@@ -276,6 +295,26 @@ export function DemoModal({ open, onClose }: DemoModalProps) {
       setErrors((current) => {
         const next = { ...current };
         delete next[field as keyof FormValues];
+        return next;
+      });
+    }
+
+    if (status === "preview" || status === "error") {
+      setStatus("idle");
+      setServerError("");
+    }
+  };
+
+  const handlePhoneChange = (value?: string) => {
+    setValues((current) => ({
+      ...current,
+      whatsappNumber: value ?? "",
+    }));
+
+    if (errors.whatsappNumber) {
+      setErrors((current) => {
+        const next = { ...current };
+        delete next.whatsappNumber;
         return next;
       });
     }
@@ -434,6 +473,40 @@ export function DemoModal({ open, onClose }: DemoModalProps) {
                   autoComplete="email"
                   onChange={handleChange}
                 />
+                <div
+                  className={`form-field${errors.whatsappNumber ? " has-error" : ""}`}
+                >
+                  <label htmlFor="demo-whatsapp-number">
+                    {copy.fields.whatsappNumber}
+                  </label>
+                  <PhoneInput
+                    id="demo-whatsapp-number"
+                    name="whatsappNumber"
+                    international
+                    withCountryCallingCode
+                    defaultCountry="DE"
+                    value={values.whatsappNumber}
+                    onChange={handlePhoneChange}
+                    flags={flags}
+                    placeholder={copy.placeholders.whatsappNumber}
+                    autoComplete="tel"
+                    required
+                    aria-invalid={Boolean(errors.whatsappNumber)}
+                    aria-describedby={
+                      errors.whatsappNumber
+                        ? "demo-whatsapp-number-error"
+                        : undefined
+                    }
+                    countrySelectProps={{
+                      "aria-label": copy.countrySelectLabel,
+                    }}
+                  />
+                  {errors.whatsappNumber && (
+                    <p className="field-error" id="demo-whatsapp-number-error">
+                      {errors.whatsappNumber}
+                    </p>
+                  )}
+                </div>
                 <SelectField
                   id="demo-country"
                   name="country"
@@ -441,6 +514,15 @@ export function DemoModal({ open, onClose }: DemoModalProps) {
                   value={values.country}
                   options={copy.countries}
                   error={errors.country}
+                  onChange={handleChange}
+                />
+                <SelectField
+                  id="demo-contact-method"
+                  name="preferredContactMethod"
+                  label={copy.fields.preferredContactMethod}
+                  value={values.preferredContactMethod}
+                  options={copy.preferredContactMethods}
+                  error={errors.preferredContactMethod}
                   onChange={handleChange}
                 />
                 <SelectField
@@ -509,6 +591,28 @@ export function DemoModal({ open, onClose }: DemoModalProps) {
                   {errors.consent}
                 </p>
               )}
+
+              <div className="consent-field optional">
+                <input
+                  id="demo-whatsapp-consent"
+                  name="whatsappConsent"
+                  type="checkbox"
+                  checked={values.whatsappConsent}
+                  aria-describedby="demo-whatsapp-consent-detail"
+                  onChange={handleChange}
+                />
+                <div>
+                  <label htmlFor="demo-whatsapp-consent">
+                    {copy.fields.whatsappConsent}
+                  </label>
+                  <p
+                    className="consent-detail"
+                    id="demo-whatsapp-consent-detail"
+                  >
+                    {copy.fields.whatsappConsentDetail}
+                  </p>
+                </div>
+              </div>
 
               {status === "preview" && (
                 <div className="form-status preview" role="status">

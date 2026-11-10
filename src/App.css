@@ -1674,6 +1674,60 @@
   text-underline-offset: 2px;
 }
 
+.consent-field.optional {
+  margin-top: 10px;
+}
+
+/* International WhatsApp number input (react-phone-number-input),
+   styled to match the surrounding demo form fields. */
+.form-field .PhoneInput {
+  --PhoneInputCountryFlag-height: 1.1em;
+  --PhoneInputCountryFlag-borderColor: rgba(28, 48, 36, 0.16);
+  --PhoneInputCountrySelect-marginRight: 0;
+  --PhoneInputCountrySelectArrow-width: 0.32em;
+  --PhoneInputCountrySelectArrow-marginLeft: 0.45em;
+  --PhoneInputCountrySelectArrow-color: var(--muted);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.9rem;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.form-field .PhoneInput .PhoneInputInput {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  box-shadow: none;
+  transition: none;
+}
+
+.form-field .PhoneInput:focus-within {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(111, 143, 122, 0.16);
+}
+
+.form-field.has-error .PhoneInput {
+  border-color: #c98d88;
+}
+
 .form-status {
   display: flex;
   gap: 10px;

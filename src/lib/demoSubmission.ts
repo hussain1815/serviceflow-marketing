@@ -4,11 +4,14 @@ export interface DemoRequestPayload {
   fullName: string;
   salonName: string;
   email: string;
+  whatsappNumber: string;
+  preferredContactMethod: string;
   country: string;
   businessType: string;
   staffCount: string;
   challenge: string;
   consent: boolean;
+  whatsappConsent: boolean;
 }
 
 export type DemoSubmissionResult =
@@ -29,6 +32,13 @@ export async function submitDemoRequest(
     return { status: "not-configured" };
   }
 
+  const {
+    whatsappNumber,
+    preferredContactMethod,
+    whatsappConsent,
+    ...existingFields
+  } = payload;
+
   const response = await fetch(web3FormsEndpoint, {
     method: "POST",
     headers: {
@@ -38,7 +48,10 @@ export async function submitDemoRequest(
     body: JSON.stringify({
       access_key: web3FormsAccessKey,
       subject: "New demo request — ServiceFlow AI marketing site",
-      ...payload,
+      ...existingFields,
+      "WhatsApp Number": whatsappNumber,
+      "Preferred Contact Method": preferredContactMethod,
+      "WhatsApp Contact Consent": whatsappConsent ? "Yes" : "No",
       source: "serviceflow-marketing",
       submittedAt: new Date().toISOString(),
     }),
