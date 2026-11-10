@@ -9,38 +9,277 @@
     <style>
       :root { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: #17241d; background: #faf8f4; }
       * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px 20px; }
-      main { width: min(100%, 720px); padding: clamp(28px, 6vw, 56px); border: 1px solid #e7e2d8; border-radius: 24px; background: #fff; box-shadow: 0 18px 46px rgba(23,36,29,.08); }
+      body { margin: 0; min-height: 100vh; padding: 32px 20px; }
+      main { width: min(100%, 840px); margin: 0 auto; padding: clamp(28px, 6vw, 56px); border: 1px solid #e7e2d8; border-radius: 24px; background: #fff; box-shadow: 0 18px 46px rgba(23,36,29,.08); }
       .brand { display: inline-flex; align-items: center; gap: 10px; color: #17241d; font-weight: 800; text-decoration: none; }
-      .mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #173f2f; color: #f7f3ea; font-size: 13px; font-weight: 800; }
-      h1 { margin: 28px 0 0; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -.04em; line-height: 1.05; }
-      p { color: #5f6b64; line-height: 1.7; }
-      .notice { margin-top: 24px; padding: 16px; border: 1px solid #e4d5b5; border-radius: 12px; background: #faf4e7; color: #6c511f; }
-      a.button { display: inline-flex; align-items: center; min-height: 46px; margin-top: 28px; padding: 0 18px; border-radius: 12px; background: #173f2f; color: #fff; font-size: .9rem; font-weight: 700; text-decoration: none; }
-      a:hover { text-decoration: underline; text-underline-offset: 3px; }
+      .mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #173f2f; color: #f7f3ea; font-size: 13px; font-weight: 800; flex: 0 0 auto; }
+      h1 { margin: 28px 0 0; font-size: clamp(1.9rem, 5vw, 2.6rem); letter-spacing: -.04em; line-height: 1.08; }
+      .updated { margin: 12px 0 0; color: #5f6b64; font-size: 0.85rem; }
+      h2 { margin: 40px 0 10px; font-size: clamp(1.15rem, 2.6vw, 1.4rem); letter-spacing: -.02em; line-height: 1.25; }
+      p { margin: 10px 0 0; color: #5f6b64; line-height: 1.7; }
+      ul, ol { margin: 10px 0 0; padding-left: 22px; }
+      li { margin: 6px 0; color: #5f6b64; line-height: 1.65; }
+      a { color: #173f2f; font-weight: 650; text-decoration: underline; text-underline-offset: 3px; }
+      a:hover { color: #2a5c46; }
+      .notice { margin-top: 24px; padding: 16px; border: 1px solid #e4d5b5; border-radius: 12px; background: #faf4e7; color: #6c511f; line-height: 1.65; }
+      .fill-in { padding: 1px 7px; border: 1px solid #e4d5b5; border-radius: 7px; background: #faf4e7; color: #6c511f; font-weight: 650; white-space: nowrap; }
+      .toc { margin: 28px 0 0; padding: 18px 22px; border: 1px solid #e7e2d8; border-radius: 14px; background: #fbfaf7; }
+      .toc h2 { margin: 0 0 10px; font-size: 1rem; letter-spacing: 0; }
+      .toc ol { margin: 0; padding-left: 20px; }
+      .toc li { margin: 4px 0; }
+      .toc a { font-weight: 550; }
+      .page-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 44px; }
+      a.button { display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px; border-radius: 12px; background: #173f2f; color: #fff; font-size: 0.9rem; font-weight: 700; text-decoration: none; }
+      a.button:hover { background: #1d4d3a; color: #fff; text-decoration: none; }
+      .field-label { color: #17241d; font-weight: 700; }
+      @media (max-width: 560px) {
+        body { padding: 16px 12px; }
+        main { border-radius: 18px; }
+        .page-links { flex-direction: column; }
+        a.button { justify-content: center; }
+      }
     </style>
   </head>
   <body>
     <main>
-      <a class="brand" href="./" aria-label="ServiceFlow AI home">
+      <a class="brand" href="/" aria-label="ServiceFlow AI home">
         <span class="mark" aria-hidden="true">SF</span>
         ServiceFlow AI
       </a>
       <h1>Privacy Policy</h1>
-      <div class="notice">
-        This page is a placeholder. The full privacy policy will be published before
-        ServiceFlow AI is generally available.
+      <p class="updated">Last updated: 10 November 2026</p>
+
+      <div class="notice" role="note">
+        Publisher note: the highlighted details in this policy must be filled in
+        before this page is published.
       </div>
+
+      <nav class="toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#information-collected">Information we collect through the Request a Demo form</a></li>
+          <li><a href="#why-we-collect">Why we collect this information</a></li>
+          <li><a href="#processing">How demo requests are processed</a></li>
+          <li><a href="#web3forms">Our form submission provider: Web3Forms</a></li>
+          <li><a href="#notification-email">Where your information is delivered</a></li>
+          <li><a href="#web3forms-retention">Web3Forms data retention</a></li>
+          <li><a href="#email-copies">Email copies and correspondence</a></li>
+          <li><a href="#hosting">Website hosting and technical data</a></li>
+          <li><a href="#international-processing">International data processing</a></li>
+          <li><a href="#your-rights">Access, correction and deletion</a></li>
+          <li><a href="#contact">Contacting us about privacy</a></li>
+          <li><a href="#whatsapp-consent">How WhatsApp consent works</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="introduction">1. Introduction</h2>
       <p>
-        The marketing website does not store demo form data in localStorage. When a
-        submission endpoint is configured, information entered into the demo request
-        form is sent directly to that endpoint so the request can be handled.
+        This Privacy Policy explains how information is handled on the ServiceFlow AI
+        marketing website (the &ldquo;website&rdquo;). The website is operated by
+        <span class="fill-in">legal business or operator name — to be provided</span>
+        (&ldquo;we&rdquo;, &ldquo;us&rdquo;),
+        <span class="fill-in">business address — to be provided</span>.
       </p>
       <p>
-        Questions about privacy can be raised through the demo request form on the
-        main website.
+        ServiceFlow AI is a salon management workspace that is currently in
+        development. This website is a marketing site: it presents information about
+        the planned product and offers a Request a Demo form. The demo form is the
+        only feature on this website through which you actively provide personal
+        information, so this policy concentrates on it. The practices described here
+        do not cover the ServiceFlow AI application itself; separate information
+        will be published if and when the product becomes available.
       </p>
-      <a class="button" href="./">Return to the ServiceFlow AI website</a>
+
+      <h2 id="information-collected">2. Information we collect through the Request a Demo form</h2>
+      <p>When you submit the Request a Demo form, the information you enter is:</p>
+      <ul>
+        <li><span class="field-label">Full name</span> — so we know who to address in our reply.</li>
+        <li><span class="field-label">Salon or business name</span> — context for preparing a relevant walkthrough.</li>
+        <li><span class="field-label">Email address</span> — so we can respond to your request.</li>
+        <li><span class="field-label">WhatsApp number</span> — an alternative way to reach you about your request, used only with your separate WhatsApp consent (see section 13).</li>
+        <li><span class="field-label">Country</span> — to consider time zones, language and early-access availability.</li>
+        <li><span class="field-label">Business type</span> — to tailor the walkthrough to your kind of salon or studio.</li>
+        <li><span class="field-label">Number of staff</span> — to tailor the walkthrough to the size of your business.</li>
+        <li><span class="field-label">Biggest salon-management challenge</span> (optional) — to understand what matters to you.</li>
+        <li><span class="field-label">Preferred contact method</span> (Email, WhatsApp or Either) — how you would like us to follow up.</li>
+        <li><span class="field-label">Privacy consent</span> — the required confirmation that you agree to be contacted about your demo request and ServiceFlow AI early access.</li>
+        <li><span class="field-label">WhatsApp contact consent</span> — an optional, separate confirmation for follow-up by WhatsApp about your demo request.</li>
+      </ul>
+      <p>
+        Along with the values you enter, the submission records the date and time it
+        was sent and a label identifying which website it came from.
+      </p>
+      <p>
+        Browser storage and cookies: the demo form does not save any of your entries
+        in your browser (it does not use localStorage), and this website does not set
+        advertising or analytics cookies.
+      </p>
+
+      <h2 id="why-we-collect">3. Why we collect this information</h2>
+      <p>We use the information you submit only to:</p>
+      <ul>
+        <li>prepare a product walkthrough that is relevant to your salon or studio;</li>
+        <li>arrange and carry out your demo, and discuss early-access next steps;</li>
+        <li>respond to you using the contact method you prefer; and</li>
+        <li>understand the type and size of business you run so our reply is useful.</li>
+      </ul>
+      <p>
+        We do not sell the information you submit, and we do not use it for
+        unrelated marketing. Submitting the form does not subscribe you to any
+        newsletter or promotional list.
+      </p>
+
+      <h2 id="processing">4. How demo requests are processed</h2>
+      <p>
+        When you submit the form, your browser sends the form values in an HTTPS
+        POST request directly to Web3Forms, our form submission provider, which
+        forwards them to our notification email address (see sections 5 and 6).
+        A member of our team then reads the request and follows up with you.
+      </p>
+      <p>
+        ServiceFlow AI currently has no production backend, no CRM and no customer
+        database. Demo requests are handled as individual email messages rather
+        than being loaded into a product database or customer profile.
+      </p>
+
+      <h2 id="web3forms">5. Our form submission provider: Web3Forms</h2>
+      <p>
+        The demo form is delivered through Web3Forms, a third-party form submission
+        service. When you submit the form, your details are transmitted from your
+        browser to Web3Forms&rsquo; servers before being delivered to our email. Web3Forms
+        processes this data under its own privacy policy, which you can read here:
+        <a href="https://web3forms.com/privacy" target="_blank" rel="noreferrer">https://web3forms.com/privacy</a>.
+        We selected Web3Forms to deliver submissions, but we do not operate or
+        control its infrastructure.
+      </p>
+
+      <h2 id="notification-email">6. Where your information is delivered</h2>
+      <p>
+        Submissions are delivered to the notification email address configured for
+        our Web3Forms account. From that point on, your request is handled like
+        normal email correspondence by our team and our email provider.
+      </p>
+
+      <h2 id="web3forms-retention">7. Web3Forms data retention</h2>
+      <p>
+        According to Web3Forms&rsquo; published privacy policy, submitted form data may
+        be retained by Web3Forms for a period of up to three years. For the current
+        and authoritative terms, see
+        <a href="https://web3forms.com/privacy" target="_blank" rel="noreferrer">https://web3forms.com/privacy</a>.
+        We do not control how long Web3Forms retains submissions, and deletion of
+        data held in its systems depends on the controls Web3Forms provides.
+      </p>
+
+      <h2 id="email-copies">8. Email copies and correspondence</h2>
+      <p>
+        A copy of each submission, and any follow-up correspondence with you, may
+        remain in our email inbox — and in any backups our email provider
+        maintains — until we delete it. We do not commit to a fixed deletion
+        period for these copies, and we will delete them when you ask us to
+        (see section 11).
+      </p>
+
+      <h2 id="hosting">9. Website hosting and technical data</h2>
+      <p>
+        This website is hosted on Vercel. When you visit any page of the website,
+        Vercel processes standard technical data — such as your IP address,
+        browser and device information, the pages requested, and the time of the
+        request — to deliver the site and for ordinary hosting purposes such as
+        security and abuse prevention. Vercel processes this data under its own
+        privacy policy, which you can read here:
+        <a href="https://vercel.com/privacy" target="_blank" rel="noreferrer">https://vercel.com/privacy</a>.
+      </p>
+
+      <h2 id="international-processing">10. International data processing</h2>
+      <p>
+        Web3Forms and Vercel operate infrastructure that may be located in various
+        countries, and our team and email provider may also be located outside your
+        country. As a result, information you submit or that is collected technically
+        may be transferred to and processed in countries other than your own,
+        including countries with data protection rules that differ from yours.
+      </p>
+
+      <h2 id="your-rights">11. Access, correction and deletion</h2>
+      <p>You can ask us to:</p>
+      <ul>
+        <li>tell you what demo request information we hold about you;</li>
+        <li>correct information that is inaccurate; or</li>
+        <li>delete the information we hold about you.</li>
+      </ul>
+      <p>
+        To make a request, email us at
+        <span class="fill-in">privacy contact email — to be provided</span>.
+        Where it is reasonable to do so, we may ask you for details that help us
+        verify your identity, such as the email address or WhatsApp number you used
+        in your request. We will respond as soon as reasonably possible.
+      </p>
+      <p>
+        We will delete the copies we hold in our email inbox on request. Where your
+        submission is also held by Web3Forms, we will take the steps available to
+        us through our Web3Forms account to have it removed, noting that Web3Forms&rsquo;
+        own retention policy (see section 7) and the controls it provides apply to
+        its systems. Backup copies held by email providers may take longer to
+        disappear.
+      </p>
+
+      <h2 id="contact">12. Contacting us about privacy</h2>
+      <p>
+        If you have questions about this policy or about how your information is
+        handled, contact us at
+        <span class="fill-in">privacy contact email — to be provided</span>
+        or by post at
+        <span class="fill-in">business address — to be provided</span>.
+        If you cannot reach us by email, you can also raise a question through the
+        demo request form on the homepage.
+      </p>
+
+      <h2 id="whatsapp-consent">13. How WhatsApp consent works</h2>
+      <p>
+        The demo form contains two separate consents, and they are not the same
+        thing.
+      </p>
+      <ul>
+        <li>
+          <span class="field-label">Privacy consent (required)</span> — you agree
+          that we may contact you about your demo request and ServiceFlow AI early
+          access. Without this confirmation the form cannot be submitted.
+        </li>
+        <li>
+          <span class="field-label">WhatsApp contact consent (optional)</span> — a
+          separate checkbox in which you agree to be contacted by WhatsApp about
+          your demo request.
+        </li>
+      </ul>
+      <p>
+        The WhatsApp consent applies only to follow-up about your specific demo
+        request — for example, arranging, rescheduling or confirming your
+        walkthrough. It is not permission for promotional or marketing WhatsApp
+        messages, product announcements, newsletters, or any contact unrelated to
+        that request, and submitting the demo form without ticking it does not give
+        us that permission.
+      </p>
+      <p>
+        If you select WhatsApp as your preferred contact method but do not tick the
+        WhatsApp consent checkbox, we will follow up by email instead. You can
+        withdraw your WhatsApp consent at any time by replying to our message or by
+        emailing us at
+        <span class="fill-in">privacy contact email — to be provided</span>.
+      </p>
+
+      <h2 id="changes">14. Changes to this policy</h2>
+      <p>
+        We may update this policy as the website and ServiceFlow AI evolve. The
+        &ldquo;last updated&rdquo; date at the top of this page shows when it was
+        last revised, and the current version is always the one published on this
+        website.
+      </p>
+
+      <div class="page-links">
+        <a class="button" href="/terms.html">Read the Terms of Service</a>
+        <a class="button" href="/">Return to the homepage</a>
+      </div>
     </main>
   </body>
 </html>
