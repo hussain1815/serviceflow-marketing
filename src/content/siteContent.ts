@@ -333,9 +333,9 @@ export const demoFormContent = {
     "Tell us a little about your business. We will use it to prepare a relevant walkthrough and discuss early-access next steps.",
   previewNoticeTitle: "Preview form",
   previewNotice:
-    "A submission endpoint is not configured yet. This form validates information locally, but it does not send or store your details.",
+    "A Web3Forms access key is not configured yet. This form validates information locally, but it does not send or store your details.",
   configuredNotice:
-    "Submitting sends your details to the configured demo request endpoint.",
+    "Submitting sends your details to the ServiceFlow AI team through Web3Forms.",
   fields: {
     fullName: "Full name",
     salonName: "Salon or business name",
@@ -370,12 +370,12 @@ export const demoFormContent = {
   errorMessage: "Please try again in a moment.",
   previewStateTitle: "Preview validated — nothing was sent.",
   previewStateMessage:
-    "No submission endpoint is configured, so your details were not sent or stored. This preview will not display a false success message.",
+    "No Web3Forms access key is configured, so your details were not sent or stored. This preview will not display a false success message.",
   required: "This field is required.",
   invalidEmail: "Enter a valid email address.",
   consentRequired: "Please confirm before submitting.",
   finePrint:
-    "Submissions are sent only when a configured endpoint is available. No form data is saved in localStorage.",
+    "Submissions are sent through Web3Forms only when an access key is configured. No form data is saved in localStorage.",
   countries: ["Germany", "United Kingdom", "Netherlands", "Other"],
   businessTypes: [
     "Hair salon",

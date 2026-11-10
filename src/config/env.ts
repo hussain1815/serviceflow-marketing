@@ -18,11 +18,10 @@ function toHttpUrl(value: string | undefined): string {
   }
 }
 
-export const demoFormEndpoint = toHttpUrl(
-  import.meta.env.VITE_DEMO_FORM_ENDPOINT,
-);
+export const web3FormsAccessKey =
+  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim() ?? "";
 
-export const isDemoFormConfigured = demoFormEndpoint.length > 0;
+export const isDemoFormConfigured = web3FormsAccessKey.length > 0;
 
 export const bookingUrl = toHttpUrl(import.meta.env.VITE_BOOKING_URL);
 

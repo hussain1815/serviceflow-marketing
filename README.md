@@ -41,7 +41,7 @@ src/
   index.css                  Design tokens, reset and shared primitives
   config/env.ts              Public environment configuration
   content/siteContent.ts     Centralised English marketing copy
-  lib/demoSubmission.ts      Configurable demo form submission layer
+  lib/demoSubmission.ts      Web3Forms demo form submission layer
   components/
     Navigation, Hero, AudienceSection, FeaturesSection,
     ProductPreviewSection, HowItWorksSection, AiVisionSection,
@@ -64,18 +64,33 @@ public/
 The form lives in `DemoModal.tsx`. It validates all required fields, email format,
 country, business type, staff count and privacy consent.
 
-Submission is handled by `src/lib/demoSubmission.ts`. Connect a form service or
-API by setting:
+Submission is handled by `src/lib/demoSubmission.ts` through the Web3Forms API
+(`https://api.web3forms.com/submit`). Connect your Web3Forms form by setting:
 
 ```bash
-VITE_DEMO_FORM_ENDPOINT=https://your-form-service.example/submit
+VITE_WEB3FORMS_ACCESS_KEY=your-web3forms-access-key
 ```
 
-The endpoint must accept a `POST` request with JSON and return a `2xx` response. It
-must also allow browser CORS requests. The payload is:
+Configuration steps:
+
+1. Create a free account at <https://web3forms.com> and verify your email
+   address.
+2. Add a new form and copy its access key from the Web3Forms dashboard.
+3. Put the access key in `VITE_WEB3FORMS_ACCESS_KEY`:
+   - locally: copy `.env.example` to `.env.local` and fill in the value;
+   - on Vercel: open **Settings → Environment Variables** for the project, add
+     `VITE_WEB3FORMS_ACCESS_KEY`, then redeploy so the value is compiled into
+     the bundle.
+4. Optionally add your domain and a reply-to address in the Web3Forms
+   dashboard.
+
+The request is a `POST` with JSON that includes the `access_key` and all form
+fields:
 
 ```json
 {
+  "access_key": "YOUR_WEB3FORMS_ACCESS_KEY",
+  "subject": "New demo request — ServiceFlow AI marketing site",
   "fullName": "Example Name",
   "salonName": "Example Salon",
   "email": "name@example.com",
@@ -89,7 +104,11 @@ must also allow browser CORS requests. The payload is:
 }
 ```
 
-When `VITE_DEMO_FORM_ENDPOINT` is not configured:
+The success state is shown only when Web3Forms confirms the submission
+(`success: true` in the JSON response). Network failures, non-2xx responses and
+rejected submissions show the error state instead.
+
+When `VITE_WEB3FORMS_ACCESS_KEY` is not configured:
 
 - The form still validates locally.
 - Submitting shows an explicit preview state.
@@ -128,16 +147,17 @@ All `VITE_` values are compiled into the client bundle. They are public and can 
 read by any visitor.
 
 - Never put private API keys, tokens or secrets in a `VITE_` variable.
-- A form service public endpoint URL is fine; a private server key is not.
+- The Web3Forms access key is designed for public client-side use; other
+  private keys are not.
 - Environment changes require a rebuild and redeploy.
 - `VITE_BASE_PATH` must start and end with `/`.
-- Invalid or empty booking/form URLs are ignored safely.
+- Invalid or empty booking URLs are ignored safely.
 
 For GitHub Actions, add the optional values as repository variables under
 **Settings → Secrets and variables → Actions → Variables**:
 
 - `VITE_BOOKING_URL`
-- `VITE_DEMO_FORM_ENDPOINT`
+- `VITE_WEB3FORMS_ACCESS_KEY`
 - `VITE_SITE_URL`
 
 The workflow supplies `VITE_BASE_PATH` automatically from the repository name.
@@ -207,7 +227,8 @@ npm run preview
 - ServiceFlow AI is currently in development; general availability is not claimed.
 - AI-powered assistance is described as roadmap only and is explicitly marked as
   unavailable.
-- Demo form submissions require a configured endpoint before they can be delivered.
+- Demo form submissions require a configured Web3Forms access key before they
+  can be delivered.
 - Meeting booking requires a configured scheduling URL.
 - Privacy Policy and Terms are placeholder pages and must be replaced before launch.
 - Product previews are built with React and demonstration data, not presented as
